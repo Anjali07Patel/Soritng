@@ -35,3 +35,44 @@ int main()
     printArray(arr,n);
     return 0;
 }
+
+//recursion 
+
+#include<iostream>
+using namespace std;
+void solve(int arr[],int i,int n)
+{
+    if(i==n)
+    {
+        return;
+    }
+    int j=i;
+    while(j>0 && arr[j-1]>arr[j])
+    {
+        int temp=arr[j-1];
+        arr[j-1]=arr[j];
+        arr[j]=temp;
+        j--;
+    }
+    solve(arr,i+1,n);
+}
+void print(int arr[],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    solve(arr,0,n);
+    print(arr,n);
+    return 0;
+}
